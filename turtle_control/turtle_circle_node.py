@@ -1,16 +1,18 @@
 
 
+
 import rclpy
 
 from rclpy.node import Node
 
 from geometry_msgs.msg import Twist
 
-
 from turtlesim.msg import Pose
 from turtlesim.srv import Spawn, Kill
 
 
+
+# use the name of the turtle
 turtlename = "chris"
 
 class TurtleCircle(Node):
@@ -40,11 +42,11 @@ class TurtleCircle(Node):
             Spawn,
             'spawn')
         
-        self.request = Spawn.Request()
-        self.request.x      = 5.0
-        self.request.y      = 5.0
-        self.request.theta  = 0.0
-        self.request.name   = turtlename
+        # create request to spawn a new turtle
+
+
+
+
         
 
         self.timer = self.create_timer(
@@ -58,27 +60,19 @@ class TurtleCircle(Node):
         # try:
         self.response = self.client.call_async(self.request)
         rclpy.spin_until_future_complete(self, self.response)
-        # except Exception as e:
-        #     self.get_logger().error(e)
-        #     rclpy.shutdown()
-        #     exit(1)
+
 
         
 
     def turtle_pose_callback(self, msg):
         self.get_logger().info(str(msg))
 
+        # change the color of the pen, based on the turtles pose
+
 
     def timer_callback(self):
 
-        vel = Twist()
-        vel.linear.x = 1.0
-        vel.linear.y = 0.0
-        vel.linear.z = 0.0
-        vel.angular.x = 0.0
-        vel.angular.y = 0.0
-        vel.angular.z = 1.0
-        self.publisher.publish(vel)
+        # create the code to publish the command to drive in circles
 
 
 
