@@ -43,6 +43,17 @@ class TurtleCircle(Node):
             'spawn')
         
         # create request to spawn a new turtle
+        self.request = Spawn.Request()
+        self.request.name = turtlename
+        self.request.x = 3.0
+        self.request.y = 3.0
+        self.request.theta = 0.0
+
+        self.client.wait_for_service()
+        # try:
+        self.response = self.client.call_async(self.request)
+
+        
 
 
 
@@ -73,6 +84,11 @@ class TurtleCircle(Node):
     def timer_callback(self):
 
         # create the code to publish the command to drive in circles
+        msg = Twist()
+        msg.linear.x = 1.0
+        msg.angular.z = 1.0
+
+        self.publisher.publish(msg)
 
 
 

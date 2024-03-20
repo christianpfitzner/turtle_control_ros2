@@ -21,6 +21,7 @@ setup(
     entry_points={
         'console_scripts': [
             'turtle_circle_node=turtle_control.turtle_circle_node:main',
+            'turtle_move_goal_node=turtle_control.turtle_move_goal_node:main',
         ],
     },
 )
