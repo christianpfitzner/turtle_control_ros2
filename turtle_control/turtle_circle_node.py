@@ -13,7 +13,7 @@ from turtlesim.srv import Spawn, Kill
 
 
 # use the name of the turtle
-turtlename = "chris"
+turtlename = "my_turtle"
 
 class TurtleCircle(Node):
 
@@ -42,23 +42,6 @@ class TurtleCircle(Node):
             Spawn,
             'spawn')
         
-        # create request to spawn a new turtle
-        self.request = Spawn.Request()
-        self.request.name = turtlename
-        self.request.x = 3.0
-        self.request.y = 3.0
-        self.request.theta = 0.0
-
-        self.client.wait_for_service()
-        # try:
-        self.response = self.client.call_async(self.request)
-
-        
-
-
-
-
-        
 
         self.timer = self.create_timer(
             1.0,
@@ -66,11 +49,9 @@ class TurtleCircle(Node):
         
 
 
-        # # create a new turtle via service call
-        self.client.wait_for_service()
-        # try:
-        self.response = self.client.call_async(self.request)
-        rclpy.spin_until_future_complete(self, self.response)
+
+
+
 
 
         
@@ -84,11 +65,10 @@ class TurtleCircle(Node):
     def timer_callback(self):
 
         # create the code to publish the command to drive in circles
-        msg = Twist()
-        msg.linear.x = 1.0
-        msg.angular.z = 1.0
+        # have a look at the following page for the Twist message
+        # https://docs.ros.org/en/humble/p/geometry_msgs/interfaces/msg/Twist.html
 
-        self.publisher.publish(msg)
+        pass
 
 
 
