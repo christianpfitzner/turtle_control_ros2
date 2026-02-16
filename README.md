@@ -140,7 +140,7 @@ colcon test --packages-select turtle_control
 ## Maintainer
 
 **Prof. Dr. Christian Pfitzner**
-- Email: christian.pfitzner@thi.de
+- Email: christian.pfitzner@th-nuernberg.de
 
 ## License
 
